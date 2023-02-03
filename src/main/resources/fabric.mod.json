@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "clickable",
+  "version": "${version}",
+  "name": "Clickable",
+  "description": "A Minecraft Mod",
+  "authors": [
+    "Wafarm"
+  ],
+  "contact": {
+    "repo": "https://github.com/Wafarm/Clickable"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "io.github.wafarm.clickable.client.ClickableClient"
+    ]
+  },
+  "mixins": [
+    "clickable.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.13",
+    "minecraft": "1.19.2"
+  }
+}
