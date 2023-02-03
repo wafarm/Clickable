@@ -1,4 +1,4 @@
-package io.github.wafarm.clickable.client;
+package io.github.wafarm.clickable;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;

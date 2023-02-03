@@ -14,7 +14,7 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "io.github.wafarm.clickable.client.ClickableClient"
+      "io.github.wafarm.clickable.ClickableClient"
     ]
   },
   "mixins": [
