@@ -1,6 +1,7 @@
 package io.github.wafarm.clickable.component;
 
 import com.google.gson.Gson;
+import net.minecraft.client.MinecraftClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,12 @@ public class ChatTextComponent implements Component {
             // add non {} text
             chatTextComponent.components.add(new PlainTextComponent(split[i++]));
         }
-        
+
+        // add chat prefix
+        if (MinecraftClient.getInstance().player == null) throw new IllegalArgumentException();
+        String playerName = MinecraftClient.getInstance().player.getGameProfile().getName();
+        chatTextComponent.components.add(0, new PlainTextComponent(String.format("<%s> ", playerName)));
+
         return chatTextComponent;
     }
 
