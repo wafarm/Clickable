@@ -17,6 +17,7 @@
       "io.github.wafarm.clickable.ClickableClient"
     ]
   },
+  "accessWidener": "clickable.accesswidener",
   "mixins": [
     "clickable.mixins.json"
   ],
