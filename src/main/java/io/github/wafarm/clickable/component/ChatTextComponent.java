@@ -16,6 +16,16 @@ public class ChatTextComponent implements Component {
         ChatTextComponent chatTextComponent = new ChatTextComponent();
         Matcher m = pattern.matcher(text);
 
+        // add chat prefix
+        if (MinecraftClient.getInstance().player == null) throw new IllegalArgumentException();
+        String playerName = MinecraftClient.getInstance().player.getGameProfile().getName();
+        chatTextComponent.components.add(0, new PlainTextComponent(String.format("<%s> ", playerName)));
+
+        if (text.startsWith("cmdmsg ")) {
+            chatTextComponent.components.add(new PlainTextComponent(text.substring(7)));
+            return chatTextComponent;
+        }
+
         String[] split = text.split(pattern.pattern(), -1);
         int i = 0;
 
@@ -39,11 +49,6 @@ public class ChatTextComponent implements Component {
             // add non {} text
             chatTextComponent.components.add(new PlainTextComponent(split[i++]));
         }
-
-        // add chat prefix
-        if (MinecraftClient.getInstance().player == null) throw new IllegalArgumentException();
-        String playerName = MinecraftClient.getInstance().player.getGameProfile().getName();
-        chatTextComponent.components.add(0, new PlainTextComponent(String.format("<%s> ", playerName)));
 
         return chatTextComponent;
     }
