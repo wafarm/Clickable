@@ -53,6 +53,27 @@ public class ChatTextComponent implements Component {
         return chatTextComponent;
     }
 
+    public static ChatTextComponent buildReceivedUrlComponent(List<String> urls) {
+        ChatTextComponent component = new ChatTextComponent();
+        if (urls.size() == 1) {
+            component.components.add(new PlainTextComponent("You have recevied a "));
+            UrlComponent urlComponent = new UrlComponent(urls.get(0));
+            urlComponent.setText("link");
+            component.components.add(urlComponent);
+        } else {
+            component.components.add(new PlainTextComponent("You have recevied some links: "));
+            int i = 1;
+            for (String url : urls) {
+                UrlComponent urlComponent = new UrlComponent(url);
+                urlComponent.setText(String.valueOf(i));
+                component.components.add(urlComponent);
+                component.components.add(new PlainTextComponent(", "));
+            }
+            component.components.remove(component.components.size() - 1);
+        }
+        return component;
+    }
+
     public String getJson() {
         Gson gson = new Gson();
         return gson.toJson(components);
